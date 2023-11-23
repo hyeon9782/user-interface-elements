@@ -1,9 +1,11 @@
-import Accordion from "./components/Accordion";
+import List from "./components/List";
 
 function App() {
   return (
     <div className="flex justify-center items-center h-full">
-      <Accordion />
+      <div>
+        <List />
+      </div>
     </div>
   );
 }
