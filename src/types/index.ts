@@ -4,3 +4,9 @@ export type Product = {
   price: number;
   discount: number;
 };
+
+export type Question = {
+  id: number;
+  question: string;
+  answer: string;
+};

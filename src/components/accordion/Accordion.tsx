@@ -10,7 +10,7 @@ const Accordion = ({ title, children }: AccordionProps) => {
     setIsOpen(!isOpen);
   };
   return (
-    <div>
+    <div className="w-[700px]">
       <div
         onClick={toggleAccordion}
         style={{ cursor: "pointer" }}
