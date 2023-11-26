@@ -14,9 +14,13 @@ const List = () => {
     fetchData();
   }, []);
   return (
-    <div className="flex flex-wrap gap-5">
+    <div className="flex flex-col gap-5 w-full">
       {list.map((item, index) => {
-        return <Card key={index}>{item.name}</Card>;
+        return (
+          <Card key={index}>
+            <div className="w-full h-[500px]">{item.name}</div>
+          </Card>
+        );
       })}
     </div>
   );
