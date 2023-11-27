@@ -19,7 +19,7 @@ const SignUpForm = () => {
     e.preventDefault();
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="flex flex-col gap-2">
       <input
         type="text"
         name="username"
