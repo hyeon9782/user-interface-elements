@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import Card from "./Card";
 import { Product } from "../types";
 
-const List = () => {
+const List = ({
+  appendFromCart,
+}: {
+  appendFromCart: (product: Product) => void;
+}) => {
   const [list, setList] = useState<Product[]>([]);
   const productsPath = "./src/json/products.json";
   function fetchData() {
@@ -13,12 +17,13 @@ const List = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
   return (
-    <div className="flex flex-col gap-5 w-full">
+    <div className="flex flex-wrap gap-5 w-full">
       {list.map((item, index) => {
         return (
           <Card key={index}>
-            <div className="w-full h-[500px]">{item.name}</div>
+            <div onClick={() => appendFromCart(item)}>{item.name}</div>
           </Card>
         );
       })}
