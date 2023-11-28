@@ -3,8 +3,18 @@ import List from "../components/List";
 import ShoppingCart from "../components/shopping-cart/ShoppingCart";
 import { Product } from "../types";
 import { getLocalStorage, setLocalStorage } from "../utils/localStorage";
+import Modal from "../components/modal/Modal";
 const HomePage = () => {
+  const [isOpen, setOpen] = useState(false);
   const [cartProducts, setCartProducts] = useState<Product[]>(getCartProducts);
+
+  const closeModal = () => {
+    setOpen(false);
+  };
+
+  const openModal = () => {
+    setOpen(true);
+  };
 
   function getCartProducts() {
     return getLocalStorage("products");
@@ -32,6 +42,19 @@ const HomePage = () => {
         cartProducts={cartProducts}
         removeFromCart={removeFromCart}
       />
+      <Modal.Trigger openModal={openModal} />
+      <Modal isOpen={isOpen}>
+        <Modal.Overlay onClose={closeModal} />
+        <Modal.Content>
+          <Modal.Header>
+            <Modal.Close onClose={closeModal} />
+          </Modal.Header>
+          <div>내용입니다.</div>
+          <Modal.Footer>
+            <button>취소</button>
+          </Modal.Footer>
+        </Modal.Content>
+      </Modal>
     </main>
   );
 };

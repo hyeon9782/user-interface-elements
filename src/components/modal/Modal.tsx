@@ -1,8 +1,17 @@
-import { useEffect } from "react";
+import { ReactNode, useEffect } from "react";
 import ModalOverlay from "./ModalOverlay";
 import ModalContent from "./ModalContent";
+import ModalHeader from "./ModalHeader";
+import ModalFooter from "./ModalFooter";
+import ModalClose from "./ModalClose";
+import ModalTrigger from "./ModalTrigger";
 
-const Modal = ({ onClose }: { onClose: () => void }) => {
+type Props = {
+  isOpen: boolean;
+  children: ReactNode;
+};
+
+const Modal = ({ isOpen, children }: Props) => {
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -10,16 +19,13 @@ const Modal = ({ onClose }: { onClose: () => void }) => {
     };
   }, []);
   return (
-    <div className="fixed inset-0 flex items-center justify-center">
-      <ModalOverlay onClose={onClose} />
-      <ModalContent>
-        <div>Modal 제목</div>
-        <div>Modal 내용</div>
-        <div>
-          <button onClick={onClose}>닫기</button>
+    <>
+      {isOpen && (
+        <div className="fixed inset-0 flex items-center justify-center">
+          {children}
         </div>
-      </ModalContent>
-    </div>
+      )}
+    </>
   );
 };
 
@@ -30,3 +36,10 @@ export default Modal;
 // 3. 모달의 위치를 변경할 수 있는 props 부여
 // 4. 모달의 두 번째 기능을 진행할 수 있는 함수 부여
 // 5. 모달의 transition을 설정할 수 있는 props 부여
+
+Modal.Trigger = ModalTrigger;
+Modal.Overlay = ModalOverlay;
+Modal.Header = ModalHeader;
+Modal.Close = ModalClose;
+Modal.Content = ModalContent;
+Modal.Footer = ModalFooter;
