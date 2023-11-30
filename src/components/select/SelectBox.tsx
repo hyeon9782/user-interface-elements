@@ -1,4 +1,5 @@
 import { MouseEvent, useState } from "react";
+import SelectTrigger from "./SelectTrigger";
 type Props = {
   options: [];
 };
@@ -42,3 +43,5 @@ const SelectBox = ({ options }: Props) => {
 };
 
 export default SelectBox;
+
+SelectBox.Trigger = SelectTrigger;
