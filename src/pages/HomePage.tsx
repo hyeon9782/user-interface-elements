@@ -4,9 +4,16 @@ import ShoppingCart from "../components/shopping-cart/ShoppingCart";
 import { Product } from "../types";
 import { getLocalStorage, setLocalStorage } from "../utils/localStorage";
 import Modal from "../components/modal/Modal";
+import Tabs from "../components/tab/Tabs";
 const HomePage = () => {
   const [isOpen, setOpen] = useState(false);
   const [cartProducts, setCartProducts] = useState<Product[]>(getCartProducts);
+
+  const tabs = [
+    { label: "Tab 1", content: <div>Tab 1 내용</div> },
+    { label: "Tab 2", content: <div>Tab 2 내용</div> },
+    { label: "Tab 3", content: <div>Tab 3 내용</div> },
+  ];
 
   const closeModal = () => {
     setOpen(false);
@@ -41,6 +48,7 @@ const HomePage = () => {
 
   return (
     <main className="flex justify-center items-center h-full">
+      <Tabs tabs={tabs} />
       <List appendFromCart={appendFromCart} cartProducts={cartProducts} />
       <ShoppingCart
         cartProducts={cartProducts}
