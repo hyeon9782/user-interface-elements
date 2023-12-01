@@ -9,6 +9,14 @@ const NAVS = [
     href: "/shopping",
     label: "Shopping",
   },
+  {
+    href: "/modal",
+    label: "Modal",
+  },
+  {
+    href: "/tab",
+    label: "Tab",
+  },
 ];
 
 const Header = () => {
