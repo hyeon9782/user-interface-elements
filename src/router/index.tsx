@@ -3,6 +3,8 @@ import HomePage from "../pages/HomePage";
 import ShoppingPage from "../pages/ShoppingPage";
 import ModalPage from "../pages/ModalPage";
 import TabPage from "../pages/TabPage";
+import FormPage from "../pages/FormPage";
+import AccordionPage from "../pages/AccordionPage";
 
 const AppRoutes = () => {
   return (
@@ -11,6 +13,8 @@ const AppRoutes = () => {
       <Route path="/shopping" element={<ShoppingPage />} />
       <Route path="/modal" element={<ModalPage />} />
       <Route path="/tab" element={<TabPage />} />
+      <Route path="/form" element={<FormPage />} />
+      <Route path="/accordion" element={<AccordionPage />} />
     </Routes>
   );
 };

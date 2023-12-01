@@ -17,6 +17,14 @@ const NAVS = [
     href: "/tab",
     label: "Tab",
   },
+  {
+    href: "/form",
+    label: "Form",
+  },
+  {
+    href: "/accordion",
+    label: "Accordion",
+  },
 ];
 
 const Header = () => {
