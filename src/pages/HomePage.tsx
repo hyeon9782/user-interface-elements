@@ -21,6 +21,10 @@ const HomePage = () => {
   }
 
   const appendFromCart = (product: Product) => {
+    if (cartProducts.find((cartProduct) => cartProduct.id === product.id)) {
+      alert("이미 장바구니에 담았어요!");
+      return;
+    }
     setCartProducts((prevData) => [...prevData, product]);
     setLocalStorage("products", [...cartProducts, product]);
   };
@@ -37,19 +41,19 @@ const HomePage = () => {
 
   return (
     <main className="flex justify-center items-center h-full">
-      <List appendFromCart={appendFromCart} />
+      <List appendFromCart={appendFromCart} cartProducts={cartProducts} />
       <ShoppingCart
         cartProducts={cartProducts}
         removeFromCart={removeFromCart}
       />
       <Modal.Trigger openModal={openModal} />
-      <Modal>
+      <Modal isOpen={isOpen}>
         <Modal.Overlay onClose={closeModal} />
         <Modal.Content>
           <Modal.Header>
             <Modal.Close onClose={closeModal} />
           </Modal.Header>
-          <div>내용입니다.</div>
+          <div>내용</div>
           <Modal.Footer>
             <button>취소</button>
           </Modal.Footer>
