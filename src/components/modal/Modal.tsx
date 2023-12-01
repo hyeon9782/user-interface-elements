@@ -7,11 +7,10 @@ import ModalClose from "./ModalClose";
 import ModalTrigger from "./ModalTrigger";
 
 type Props = {
-  isOpen: boolean;
   children: ReactNode;
 };
 
-const Modal = ({ isOpen, children }: Props) => {
+const Modal = ({ children }: Props) => {
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -20,11 +19,11 @@ const Modal = ({ isOpen, children }: Props) => {
   }, []);
   return (
     <>
-      {isOpen && (
+      {
         <div className="fixed inset-0 flex items-center justify-center">
           {children}
         </div>
-      )}
+      }
     </>
   );
 };

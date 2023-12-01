@@ -3,7 +3,7 @@ import SelectTrigger from "./SelectTrigger";
 type Props = {
   options: [];
 };
-const SelectBox = ({ options }: Props) => {
+const Select = ({ options }: Props) => {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
 
@@ -42,6 +42,6 @@ const SelectBox = ({ options }: Props) => {
   );
 };
 
-export default SelectBox;
+export default Select;
 
-SelectBox.Trigger = SelectTrigger;
+Select.Trigger = SelectTrigger;

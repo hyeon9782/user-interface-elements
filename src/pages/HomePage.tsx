@@ -43,7 +43,7 @@ const HomePage = () => {
         removeFromCart={removeFromCart}
       />
       <Modal.Trigger openModal={openModal} />
-      <Modal isOpen={isOpen}>
+      <Modal>
         <Modal.Overlay onClose={closeModal} />
         <Modal.Content>
           <Modal.Header>
