@@ -5,6 +5,7 @@ import ModalPage from "../pages/ModalPage";
 import TabPage from "../pages/TabPage";
 import FormPage from "../pages/FormPage";
 import AccordionPage from "../pages/AccordionPage";
+import PaymentPage from "../pages/PaymentPage";
 
 const AppRoutes = () => {
   return (
@@ -15,6 +16,7 @@ const AppRoutes = () => {
       <Route path="/tab" element={<TabPage />} />
       <Route path="/form" element={<FormPage />} />
       <Route path="/accordion" element={<AccordionPage />} />
+      <Route path="/payment" element={<PaymentPage />} />
     </Routes>
   );
 };

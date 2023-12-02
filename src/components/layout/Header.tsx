@@ -25,6 +25,10 @@ const NAVS = [
     href: "/accordion",
     label: "Accordion",
   },
+  {
+    href: "/payment",
+    label: "Payment",
+  },
 ];
 
 const Header = () => {
