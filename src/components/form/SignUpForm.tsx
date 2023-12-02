@@ -14,6 +14,10 @@ const SignUpForm = () => {
     password: true,
   });
 
+  const disabled =
+    !Object.values(formValid).every((isValid) => isValid) ||
+    !Object.values(formData).every((value) => value !== "");
+
   const validateForm = (id: string, value: string) => {
     if (value === "") {
       return true;
@@ -27,7 +31,7 @@ const SignUpForm = () => {
         regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
         break;
       case "password":
-        regex = /^(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.[!@#$%^&*]).{8,}$/;
+        regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
         break;
       default:
         regex = /^[a-zA-Z]+$/;
@@ -50,6 +54,7 @@ const SignUpForm = () => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    alert("클릭");
   };
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-2">
@@ -94,15 +99,17 @@ const SignUpForm = () => {
         />
       </InputWrapper>
 
-      <button type="submit">Sign Up</button>
+      <button type="submit" disabled={disabled}>
+        Sign Up
+      </button>
     </form>
   );
 };
 
 export default SignUpForm;
 
-// 1. 제어 컴포넌트로 개발
-// 2. 사용자가 입력을 하자마자 유효성 검사 진행
-// 3. 조건에 따른 제출 버튼 (비)활성화 (유효성 감사가 모두 통과되면)
-// 4. 웹 접근성을 고려하여 에러 메세지 작성
+// 1. 제어 컴포넌트로 개발 => O
+// 2. 사용자가 입력을 할때마다 유효성 검사 진행 => O
+// 3. 조건에 따른 제출 버튼 (비)활성화 (유효성 감사가 모두 통과되면) => O
+// 4. 웹 접근성을 고려하여 에러 메세지 작성 => O
 // 5.
