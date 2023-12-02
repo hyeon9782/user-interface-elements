@@ -1,5 +1,4 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import FormControl from "./FormControl";
 import InputWrapper from "./InputWrapper";
 
 const SignUpForm = () => {
@@ -9,12 +8,31 @@ const SignUpForm = () => {
     password: "",
   });
 
-  const validateForm = () => {
-    if (!formData.username || !formData.email || !formData.password) {
-      alert("모든 필드를 입력해주세요.");
-      return false;
+  const [formValid, setFormValid] = useState({
+    username: true,
+    email: true,
+    password: true,
+  });
+
+  const validateForm = (id: string, value: string) => {
+    if (value === "") {
+      return true;
     }
-    return true;
+    let regex: RegExp;
+    switch (id) {
+      case "username":
+        regex = /^[a-zA-Z]+$/;
+        break;
+      case "email":
+        regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
+        break;
+      case "password":
+        regex = /^(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.[!@#$%^&*]).{8,}$/;
+        break;
+      default:
+        regex = /^[a-zA-Z]+$/;
+    }
+    return regex.test(value);
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -23,13 +41,15 @@ const SignUpForm = () => {
       ...prevData,
       [id]: value,
     }));
+
+    setFormValid((prevVail) => ({
+      ...prevVail,
+      [id]: validateForm(id, value),
+    }));
   };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    if (validateForm()) {
-      alert("회원가입 성공");
-    }
   };
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-2">
@@ -42,10 +62,39 @@ const SignUpForm = () => {
         <InputWrapper.Label>Username</InputWrapper.Label>
         <InputWrapper.Input />
         <InputWrapper.Caption
-          isVaild={false}
-          text="이미 존재하는 유저네임이에요!"
+          isValid={formValid.username}
+          text="유저 네임은 영문만 입력할 수 있어요."
         />
       </InputWrapper>
+      <InputWrapper
+        id="email"
+        value={formData.email}
+        type="email"
+        onChange={handleInputChange}
+      >
+        <InputWrapper.Label>Email</InputWrapper.Label>
+        <InputWrapper.Input />
+        <InputWrapper.Caption
+          isValid={formValid.email}
+          text="이메일 형식에 맞지 않습니다."
+        />
+      </InputWrapper>
+
+      <InputWrapper
+        id="password"
+        value={formData.password}
+        type="password"
+        onChange={handleInputChange}
+      >
+        <InputWrapper.Label>Password</InputWrapper.Label>
+        <InputWrapper.Input />
+        <InputWrapper.Caption
+          isValid={formValid.password}
+          text="비밀번호는 영문 대소문자, 숫자, 특수문자를 포함한 8자리 이상이어야 합니다."
+        />
+      </InputWrapper>
+
+      <button type="submit">Sign Up</button>
     </form>
   );
 };

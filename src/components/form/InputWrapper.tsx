@@ -21,7 +21,7 @@ const InputWrapper = ({ id, value, type, onChange, children }: Props) => {
   const contextValue = { id, value, type, onChange };
   return (
     <InputContext.Provider value={contextValue}>
-      {children}
+      <div>{children}</div>
     </InputContext.Provider>
   );
 };
@@ -49,8 +49,10 @@ const Label = ({ children, ...props }: { children: ReactNode }) => {
   );
 };
 
-const Caption = ({ text, isVaild }: { text: string; isVaild: boolean }) => (
-  <p className={isVaild ? "block" : "invisible"}>{text}</p>
+const Caption = ({ text, isValid }: { text: string; isValid: boolean }) => (
+  <p className={isValid ? "invisible" : "block"} aria-live="assertive">
+    {text}
+  </p>
 );
 
 InputWrapper.Input = Input;
