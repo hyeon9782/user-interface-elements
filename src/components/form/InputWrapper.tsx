@@ -21,7 +21,7 @@ const InputWrapper = ({ id, value, type, onChange, children }: Props) => {
   const contextValue = { id, value, type, onChange };
   return (
     <InputContext.Provider value={contextValue}>
-      <div>{children}</div>
+      <div className="">{children}</div>
     </InputContext.Provider>
   );
 };
@@ -35,7 +35,7 @@ const Input = ({ ...props }) => {
       type={type}
       onChange={onChange}
       {...props}
-      className=""
+      className="outline-none border-[1px] border-gray-400 rounded-md mt-[5px] w-full"
     />
   );
 };

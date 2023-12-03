@@ -2,7 +2,7 @@ import SignUpForm from "../components/form/SignUpForm";
 
 const FormPage = () => {
   return (
-    <main>
+    <main className="flex justify-center items-center h-[calc(100%-44px)]">
       <SignUpForm />
     </main>
   );

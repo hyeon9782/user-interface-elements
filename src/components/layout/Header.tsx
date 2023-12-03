@@ -37,10 +37,9 @@ const Header = () => {
     <header>
       <nav>
         <ul className="flex gap-2">
-          {NAVS.map((nav, index) => (
-            <Link to={nav.href}>
+          {NAVS.map((nav, idx) => (
+            <Link to={nav.href} key={idx}>
               <li
-                key={index}
                 className={`p-[10px] ${
                   pathname === nav.href
                     ? "bg-black text-white"

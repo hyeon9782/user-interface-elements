@@ -57,7 +57,10 @@ const SignUpForm = () => {
     alert("클릭");
   };
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col border-gray-400 border-[1px] rounded-md p-[20px] w-[400px]"
+    >
       <InputWrapper
         id="username"
         value={formData.username}
@@ -65,6 +68,7 @@ const SignUpForm = () => {
         onChange={handleInputChange}
       >
         <InputWrapper.Label>Username</InputWrapper.Label>
+        <br />
         <InputWrapper.Input />
         <InputWrapper.Caption
           isValid={formValid.username}
@@ -78,6 +82,7 @@ const SignUpForm = () => {
         onChange={handleInputChange}
       >
         <InputWrapper.Label>Email</InputWrapper.Label>
+        <br />
         <InputWrapper.Input />
         <InputWrapper.Caption
           isValid={formValid.email}
@@ -92,6 +97,7 @@ const SignUpForm = () => {
         onChange={handleInputChange}
       >
         <InputWrapper.Label>Password</InputWrapper.Label>
+        <br />
         <InputWrapper.Input />
         <InputWrapper.Caption
           isValid={formValid.password}
@@ -99,7 +105,11 @@ const SignUpForm = () => {
         />
       </InputWrapper>
 
-      <button type="submit" disabled={disabled}>
+      <button
+        type="submit"
+        disabled={disabled}
+        className="border-2 rounded-md p-[5px] bg-black text-white font-bold disabled:opacity-75"
+      >
         Sign Up
       </button>
     </form>
@@ -112,4 +122,3 @@ export default SignUpForm;
 // 2. 사용자가 입력을 할때마다 유효성 검사 진행 => O
 // 3. 조건에 따른 제출 버튼 (비)활성화 (유효성 감사가 모두 통과되면) => O
 // 4. 웹 접근성을 고려하여 에러 메세지 작성 => O
-// 5.
