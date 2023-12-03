@@ -1,9 +1,10 @@
-import Toast from "../components/Toast";
+import useToast from "../hooks/useToast";
 
 const HomePage = () => {
+  const { openToast } = useToast();
   return (
-    <main className="h-[calc(100%-44px)]">
-      <Toast title="자산을 모두 연결했어요" />
+    <main className="h-[calc(100%-44px)] ">
+      <button onClick={openToast}>Toast Button</button>
     </main>
   );
 };

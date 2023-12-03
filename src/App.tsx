@@ -1,12 +1,15 @@
 import { BrowserRouter } from "react-router-dom";
 import AppRoutes from "./router";
 import Header from "./components/layout/Header";
+import ToastProvider from "./provider/ToastProvider";
 
 function App() {
   return (
     <BrowserRouter>
-      <Header />
-      <AppRoutes />
+      <ToastProvider>
+        <Header />
+        <AppRoutes />
+      </ToastProvider>
     </BrowserRouter>
   );
 }

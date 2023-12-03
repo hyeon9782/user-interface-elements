@@ -4,7 +4,7 @@
 import { useEffect, useState } from "react";
 
 type ToastProps = {
-  title: string;
+  title?: string;
   duration?: number;
 };
 const Toast = ({ title, duration = 5000 }: ToastProps) => {
@@ -31,4 +31,6 @@ export default Toast;
 
 // 1. Toast 컴포넌트를 구현해주세요.
 // 2. Toast 컴포넌트의 위치, 제목, 설명을 개발자가 변경할 수 있게해주세요.
-// 3. Toast 컴포넌트의
+// 위치는 top-left / top-center / top-right / bottom-left / bottom-center / bottom-right
+// 3. 개발자가 원하는 컴포넌트를 띄울 수 있도록 해줘야한다.
+// 4. Toast 컴포넌트가 이미 있다면 해당 컴포넌트 위 또는 아래에 다음 컴포넌트를 렌더링 해야한다.
