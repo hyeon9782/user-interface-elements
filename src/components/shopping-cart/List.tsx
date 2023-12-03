@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "./Card";
-import { Product } from "../types";
-import CartItem from "./shopping-cart/CartItem";
+import { Product } from "../../types";
+import CartItem from "./CartItem";
 
 const List = ({
   appendFromCart,

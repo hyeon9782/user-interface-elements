@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Product } from "../types";
 import { getLocalStorage, setLocalStorage } from "../utils/localStorage";
-import List from "../components/List";
+import List from "../components/shopping-cart/List";
 import ShoppingCart from "../components/shopping-cart/ShoppingCart";
 
 const ShoppingPage = () => {

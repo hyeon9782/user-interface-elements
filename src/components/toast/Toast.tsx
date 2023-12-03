@@ -2,12 +2,9 @@
 // 예) 자산을 모두 연결했어요.
 
 import { useEffect, useState } from "react";
+import { Toast } from "../../types";
 
-type ToastProps = {
-  title?: string;
-  duration?: number;
-};
-const Toast = ({ title, duration = 5000 }: ToastProps) => {
+const Toast = ({ title, duration = 3000, id }: Toast) => {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
@@ -21,10 +18,12 @@ const Toast = ({ title, duration = 5000 }: ToastProps) => {
   }, [duration]);
 
   return visible ? (
-    <div className="bg-green-400 opacity-50 rounded-md py-[10px] px-[20px] fixed top-10 left-[50%] translate-x-[-50%]">
+    <div className="bg-green-400 opacity-50 rounded-md py-[10px] px-[20px]">
       {title}
     </div>
-  ) : null;
+  ) : (
+    <></>
+  );
 };
 
 export default Toast;
