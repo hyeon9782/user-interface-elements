@@ -1,23 +1,27 @@
 import { Route, Routes } from "react-router-dom";
-import HomePage from "../pages/HomePage";
-import ShoppingPage from "../pages/ShoppingPage";
-import ModalPage from "../pages/ModalPage";
-import TabPage from "../pages/TabPage";
-import FormPage from "../pages/FormPage";
-import AccordionPage from "../pages/AccordionPage";
-import PaymentPage from "../pages/PaymentPage";
+import { Suspense, lazy } from "react";
+
+const Home = lazy(() => import("../pages/HomePage"));
+const Shopping = lazy(() => import("../pages/ShoppingPage"));
+const Modal = lazy(() => import("../pages/ModalPage"));
+const Tab = lazy(() => import("../pages/TabPage"));
+const Form = lazy(() => import("../pages/FormPage"));
+const Accordion = lazy(() => import("../pages/AccordionPage"));
+const Payment = lazy(() => import("../pages/PaymentPage"));
 
 const AppRoutes = () => {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/shopping" element={<ShoppingPage />} />
-      <Route path="/modal" element={<ModalPage />} />
-      <Route path="/tab" element={<TabPage />} />
-      <Route path="/form" element={<FormPage />} />
-      <Route path="/accordion" element={<AccordionPage />} />
-      <Route path="/payment" element={<PaymentPage />} />
-    </Routes>
+    <Suspense fallback={<div>로딩중...</div>}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/shopping" element={<Shopping />} />
+        <Route path="/modal" element={<Modal />} />
+        <Route path="/tab" element={<Tab />} />
+        <Route path="/form" element={<Form />} />
+        <Route path="/accordion" element={<Accordion />} />
+        <Route path="/payment" element={<Payment />} />
+      </Routes>
+    </Suspense>
   );
 };
 
