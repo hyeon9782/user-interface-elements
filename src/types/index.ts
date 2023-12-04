@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ComponentType, ReactNode } from "react";
 
 export type Product = {
   id: number;
@@ -20,4 +20,14 @@ export type Toast = {
   duration?: number;
   position?: string;
   render?: () => ReactNode;
+};
+
+export type Modal = {
+  Component: ComponentType<any>;
+  props: any;
+};
+
+export type ModalAction = {
+  open: (Component: ComponentType<any>, props: any) => void;
+  close: (Component: ComponentType<any>) => void;
 };

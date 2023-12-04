@@ -14,7 +14,7 @@ const Tooltip = ({ children, text }: TooltipProps) => {
     if (isHovered) {
       setIsVisible(true);
     } else {
-      timeoutId = setTimeout(() => setIsVisible(false), 3000);
+      timeoutId = setTimeout(() => setIsVisible(false), 1000);
     }
 
     return () => {

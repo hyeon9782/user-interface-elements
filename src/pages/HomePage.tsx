@@ -5,7 +5,7 @@ const HomePage = () => {
   const { openToast } = useToast();
   return (
     <main className="h-[calc(100%-44px)] ">
-      <Tooltip text="Modal입니다!">
+      <Tooltip text="Toast입니다!">
         <button onClick={openToast}>Toast Button</button>
       </Tooltip>
     </main>

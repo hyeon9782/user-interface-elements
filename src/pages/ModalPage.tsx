@@ -1,30 +1,19 @@
-import { useState } from "react";
-import Modal from "../components/modal/Modal";
+import useModal from "../hooks/useModal";
+import { modals } from "../components/modal/Modals";
 
 const ModalPage = () => {
-  const [isOpen, setOpen] = useState(false);
-  const closeModal = () => {
-    setOpen(false);
-  };
-
-  const openModal = () => {
-    setOpen(true);
-  };
+  const { openModal, closeModal } = useModal();
   return (
-    <main>
-      <Modal.Trigger openModal={openModal} />
-      <Modal isOpen={isOpen}>
-        <Modal.Overlay onClose={closeModal} />
-        <Modal.Content>
-          <Modal.Header>
-            <Modal.Close onClose={closeModal} />
-          </Modal.Header>
-          <div>내용</div>
-          <Modal.Footer>
-            <button>취소</button>
-          </Modal.Footer>
-        </Modal.Content>
-      </Modal>
+    <main className="h-[calc(100%-44px)]">
+      <button
+        onClick={() => {
+          openModal(modals.LoginModal, {
+            closeModal,
+          });
+        }}
+      >
+        Login Modal
+      </button>
     </main>
   );
 };
