@@ -8,7 +8,9 @@ const ModalPage = () => {
       <button
         onClick={() => {
           openModal(modals.LoginModal, {
-            closeModal,
+            closeModal: () => {
+              closeModal(modals.LoginModal);
+            },
           });
         }}
       >

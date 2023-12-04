@@ -1,7 +1,6 @@
 import Modal from "./Modal";
 type LoginModalProps = {
   isOpen: boolean;
-
   closeModal: () => void;
 };
 const LoginModal = ({ isOpen, closeModal }: LoginModalProps) => {

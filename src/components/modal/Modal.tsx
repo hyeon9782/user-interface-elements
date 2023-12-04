@@ -8,7 +8,7 @@ import ModalTrigger from "./ModalTrigger";
 
 type Props = {
   children: ReactNode;
-  isOpen: boolean;
+  isOpen?: boolean;
 };
 
 const Modal = ({ children, isOpen }: Props) => {
@@ -19,15 +19,13 @@ const Modal = ({ children, isOpen }: Props) => {
     };
   }, []);
   return (
-    isOpen && (
-      <>
-        {
-          <div className="fixed inset-0 flex items-center justify-center">
-            {children}
-          </div>
-        }
-      </>
-    )
+    <>
+      {
+        <div className="fixed inset-0 flex items-center justify-center">
+          {children}
+        </div>
+      }
+    </>
   );
 };
 
