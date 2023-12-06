@@ -1,19 +1,30 @@
-import { forwardRef, useImperativeHandle, useRef } from "react";
+import { useRef } from "react";
 
-type Props = {
-  isOpen: boolean;
-};
+const Dialog = () => {
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
-const Dialog = (props) => {
-  const dialogRef = useRef(null);
+  // dialog 열기
+  const handleOpenDialog = () => {
+    dialogRef.current?.showModal();
+  };
+
+  // dialog 닫기
+  const handleCloseDialog = () => {
+    dialogRef.current?.close();
+  };
+
   return (
-    <dialog ref={dialogRef}>
-      Dialog
-      <form method="dialog">
-        <button value="close">Close</button>
-        <button value="confirm">Confirm</button>
-      </form>
-    </dialog>
+    <>
+      <button onClick={handleOpenDialog}>Dialog</button>
+      <dialog ref={dialogRef}>
+        Dialog
+        {/* form 태그에 method를 dialog로 지정하고 button에 value 값을 close로 지정하면 자동으로 dialog가 닫힘  */}
+        <form method="dialog">
+          <button value="close">Close</button>
+          <button value="confirm">Confirm</button>
+        </form>
+      </dialog>
+    </>
   );
 };
 
